@@ -74,7 +74,7 @@ const MovieCard = ({ movie, onDelete }) => {
         src={
           movie.image && movie.image.startsWith("http")
             ? movie.image // If it's a full URL
-            : `http://localhost:5000/uploads/${movie.image}` // If it's a local file
+            : `https://movie-app-backend-cwps.onrender.com/uploads/${movie.image}` // If it's a local file
         }
         alt={movie.title}
         width="100%"

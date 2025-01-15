@@ -38,7 +38,7 @@ const RegisterPage = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/register",
+        "https://movie-app-backend-cwps.onrender.com/api/users/register",
         values
       );
       console.log(response.data);
@@ -56,17 +56,17 @@ const RegisterPage = () => {
   };
 
   if (loading) {
-        return (
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            minHeight="80vh"
-          >
-            <CircularProgress />
-          </Box>
-        );
-      }
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="80vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box

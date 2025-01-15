@@ -25,9 +25,12 @@ const HomePage = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/movies`, {
-          params: { page: currentPage, limit: 50 },
-        });
+        const response = await axios.get(
+          `https://movie-app-backend-cwps.onrender.com/api/movies`,
+          {
+            params: { page: currentPage, limit: 50 },
+          }
+        );
         setMovies(response.data.movies);
         setTotalMovies(response.data.totalMovies);
         setTotalPages(response.data.totalPages);
@@ -47,7 +50,6 @@ const HomePage = () => {
       window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
     }
   };
-
 
   return (
     <Box sx={{ padding: 4, backgroundColor: "#f4f4f9", minHeight: "100vh" }}>

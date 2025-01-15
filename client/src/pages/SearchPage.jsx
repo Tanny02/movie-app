@@ -39,7 +39,7 @@ const SearchPage = () => {
       if (sortField) queryParams += `&sort=${sortField}`;
 
       const response = await fetch(
-        `http://localhost:5000/api/movies/search?${queryParams}`
+        `https://movie-app-backend-cwps.onrender.com/api/movies/search?${queryParams}`
       );
 
       if (!response.ok) throw new Error("Failed to fetch movies");
@@ -150,4 +150,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-

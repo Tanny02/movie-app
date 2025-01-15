@@ -36,7 +36,7 @@ const UpdateMoviePage = () => {
     const fetchMovie = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/movies/${id}`
+          `https://movie-app-backend-cwps.onrender.com/api/movies/${id}`
         );
         const movie = response.data;
         setFormData({
@@ -57,27 +57,27 @@ const UpdateMoviePage = () => {
     fetchMovie();
   }, [id]);
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-      // If the input is for the rating, ensure it has no more than one decimal point.
-      if (name === "rating") {
-        // Prevent the user from entering more than one decimal point.
-        const regex = /^(\d+(\.\d{0,1})?)?$/; // Matches up to one decimal point
+    // If the input is for the rating, ensure it has no more than one decimal point.
+    if (name === "rating") {
+      // Prevent the user from entering more than one decimal point.
+      const regex = /^(\d+(\.\d{0,1})?)?$/; // Matches up to one decimal point
 
-        if (
-          regex.test(value) &&
-          (value === "" || (parseFloat(value) >= 0 && parseFloat(value) <= 10))
-        ) {
-          setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-          }));
-        }
-      } else {
-        setFormData((prev) => ({ ...prev, [name]: value }));
+      if (
+        regex.test(value) &&
+        (value === "" || (parseFloat(value) >= 0 && parseFloat(value) <= 10))
+      ) {
+        setFormData((prev) => ({
+          ...prev,
+          [name]: value,
+        }));
       }
-    };
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   const handleImageChange = (e) => {
     setImageLoading(true);
@@ -144,7 +144,7 @@ const UpdateMoviePage = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/movies/${id}`,
+        `https://movie-app-backend-cwps.onrender.com/api/movies/${id}`,
         formData,
         {
           headers: {
@@ -269,7 +269,7 @@ const UpdateMoviePage = () => {
                     formData.imagePreview &&
                     formData.imagePreview.startsWith("http")
                       ? formData.imagePreview
-                      : `http://localhost:5000/uploads/${formData.imagePreview}`
+                      : `https://movie-app-backend-cwps.onrender.com/uploads/${formData.imagePreview}`
                   }
                   alt="Selected"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}

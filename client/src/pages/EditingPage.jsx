@@ -30,9 +30,12 @@ const EditingPage = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/movies`, {
-          params: { page: currentPage, limit: 50 },
-        });
+        const response = await axios.get(
+          `https://movie-app-backend-cwps.onrender.com/api/movies`,
+          {
+            params: { page: currentPage, limit: 50 },
+          }
+        );
         setMovies(response.data.movies);
         setTotalMovies(response.data.totalMovies);
         setTotalPages(response.data.totalPages);
@@ -55,11 +58,14 @@ const EditingPage = () => {
 
   const handleDelete = async (movieId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/movies/${movieId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://movie-app-backend-cwps.onrender.com/api/movies/${movieId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setMovies((prevMovies) => {
         const updatedMovies = prevMovies.filter(
@@ -85,7 +91,6 @@ const EditingPage = () => {
       console.error("Error deleting movie:", error);
     }
   };
-
 
   return (
     <Box

@@ -38,7 +38,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/login",
+        "https://movie-app-backend-cwps.onrender.com/api/users/login",
         values
       );
       const { token, user } = response.data;

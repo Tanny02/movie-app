@@ -138,7 +138,7 @@ const AddMoviePage = () => {
       form.append("file", formData.file); // Appending file to FormData
 
       const response = await axios.post(
-        "http://localhost:5000/api/movies/add",
+        "https://movie-app-backend-cwps.onrender.com/api/movies/add",
         form,
         {
           headers: {
@@ -161,18 +161,18 @@ const AddMoviePage = () => {
     }
   };
 
-   if (loading) {
-      return (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="80vh"
-        >
-          <CircularProgress />
-        </Box>
-      );
-    }
+  if (loading) {
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="80vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box
